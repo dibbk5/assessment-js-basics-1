@@ -49,10 +49,17 @@ const pinkPrice = .55
     Log `totalAcres` to the console.
 */
 
-// CODE HERE
+let appleArrays = [fujiAcres, galaAcres, pinkAcres]//create an array of the arrays that can be parced
+let totalAcres = 0
 
+//loop through the first array to get to each array and then loop within those arrays adding up each number in the array
+for (i = 0; i < appleArrays.length; i++) {
+    for (j = 0; j < appleArrays[i].length; j++) {
+        totalAcres += appleArrays[i][j]
+    } 
+}
 
-
+console.log(totalAcres)//console log the total acres picked
 
 
 // PROBLEM 2
@@ -67,11 +74,9 @@ const pinkPrice = .55
     Log `averageDailyAcres` to the console.
 */
 
-// CODE HERE
+let averageDailyAcres = (totalAcres/7)//take total acres divided by the 7 days in a week
 
-
-
-
+console.log(averageDailyAcres)//console log the average acres per day
 
 // PROBLEM 3
 
@@ -105,8 +110,12 @@ const pinkPrice = .55
 let acresLeft = 174 
 let days = 0
 
-// CODE HERE
+while (acresLeft > 0) {
+    days += 1;
+    acresLeft -= averageDailyAcres
+}
 
+console.log(days)
 
 
 // PROBLEM 4
@@ -133,16 +142,25 @@ let days = 0
     values to the new arrays.
 */
 
-// CODE HERE
+let tonsDaily = 6.5//tons per acre
+let fujiTons = fujiAcres.slice(0,7)//copy fuji acres array
+let galaTons = galaAcres.slice(0,7)//copy gala acres array
+let pinkTons = pinkAcres.slice(0,7)//copy pink acres array
+let appleTons = [fujiTons, galaTons, pinkTons]//new nested array
+let appleNames = ["fuji apples", "gala apples", "pink apples"]//used for console logging 
 
-// let fujiTons =
-// let galaTons =
-// let pinkTons =
+//loop through each of the new arrays and multiply each value by the daily acre tons
+for (i = 0; i < appleTons.length; i++) {
+    for (j = 0; j < appleTons[i].length; j++) {
+        appleTons[i][j] *= tonsDaily
+    } 
+}
 
+console.log(appleTons)//console log all three ton arrays at once
 
-
-
-
+// for (i = 0; i < appleTons.length; i++) {
+//     console.log(`The daily tons harvested per day ${appleTons[i]} ${appleNames[i]}`)
+// }
 
 // PROBLEM 5
 
@@ -160,16 +178,26 @@ let days = 0
     Hint: there are 2000 pounds in a ton.
 */
 
-// CODE HERE 
+let lbsperTon = 2000
+let fujiPounds = 0
+let galaPounds = 0
+let pinkPounds = 0
+let applePounds = [fujiPounds, galaPounds, pinkPounds]
 
-// let fujiPounds =
-// let galaPounds =
-// let pinkPounds =
+//loops through apple tons and multiplies them by the the tons then summs the apple tons arrays
+for (i = 0; i < applePounds.length; i++) {
+    for (j = 0; j < appleTons[i].length; j++) {
+        appleTons[i][j] *= lbsperTon
+        applePounds[i] += appleTons[i][j]
+    } 
+}
 
+console.log(applePounds)//console logs the apple pounds per apple
 
-
-
-
+// puts each respective apple poundage into a sentence
+for (i = 0; i < applePounds.length; i++) {
+    console.log(`This week ${applePounds[i]} lbs of ${appleNames[i]} were harvested.`)
+}
 
 // PROBLEM 6
 
@@ -187,15 +215,23 @@ let days = 0
     console. 
 */
 
-// CODE HERE
+let fujiProfit = 0
+let galaProfit = 0
+let pinkProfit = 0
+let applePrice = [fujiPrice, galaPrice, pinkPrice]
+let appleProfit = [fujiProfit, galaProfit, pinkProfit]
 
-// let fujiProfit =
-// let galaProfit =
-// let pinkProfit =
+//loops through the apple profits and assigns the profit by multiplying the pounds per apple type by the price per apple type
+for (i = 0; i < appleProfit.length; i++) {
+    appleProfit[i] = applePounds[i] * applePrice[i]
+}
 
+console.log(appleProfit)//console logs the profit per apple type
 
-
-
+//puts the profit per apple type into a sence and console logs each of them
+for (i = 0; i < appleProfit.length; i++) {
+    console.log(`This week ${appleProfit[i]} of profit was made from ${appleNames[i]}.`)
+}
 
 
 // PROBLEM 7
@@ -208,4 +244,12 @@ let days = 0
     Log `totalProfit` to the console.
 */
 
-// CODE HERE
+let totalProfit = 0
+
+//summed each type of apple into the total profit
+for (i = 0; i < appleProfit.length; i++) {
+    totalProfit += appleProfit[i]
+}
+
+//console logged total profit within the sentence
+console.log(`This week we made ${totalProfit} from all apples`)

@@ -3,12 +3,16 @@
 
 const faveColors = ['red', 'green', 'black']
 
-//CODE HERE
+let colorCopy = faveColors.slice(0,3)//create a copy of faveColors
+
+console.log(colorCopy)//check code
 
 //////////////////PROBLEM 2////////////////////
 /* Add a fourth color to the end of the 'colorCopy' array using the push method. */
 
-//CODE HERE
+colorCopy.push("pink")//add pink to the colorCopy array
+
+console.log(colorCopy)//check code
 
 //////////////////PROBLEM 3////////////////////
 /*
@@ -18,7 +22,9 @@ const faveColors = ['red', 'green', 'black']
 
 const numbers = [1, 2, 3, 4, 5]
 
-//CODE HERE
+let middleNums = numbers.slice(1,4)//take the middle numbers in numbers array and make a new array
+
+console.log(middleNums)//check code
 
 
 //////////////////PROBLEM 4////////////////////
@@ -33,4 +39,15 @@ const numbers = [1, 2, 3, 4, 5]
 
 const bigOrSmallArray = [1, 99, 42, 69, 102, -10, 159, 352]
 
-// CODE HERE
+let answers = []//blank array
+
+//loop through bigOrSmallArray to see if each number is bigger or smaller than 100
+for (i = 0; i < bigOrSmallArray.length; i++) {
+  if (bigOrSmallArray[i] > 100) {
+    answers.push("big")
+  } else {
+    answers.push("small")
+  }
+}
+
+console.log(answers)//check code
